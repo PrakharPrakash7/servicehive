@@ -1,0 +1,110 @@
+### Test API Endpoints
+### Make sure the backend server is running on http://localhost:5000
+
+### Health Check
+GET http://localhost:5000/health
+
+### ========== AUTH ENDPOINTS ==========
+
+### 1. Sign Up
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "password123",
+  "name": "Test User"
+}
+
+### 2. Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "testuser@example.com",
+  "password": "password123"
+}
+
+### 3. Get Profile (Replace TOKEN with your JWT token)
+GET http://localhost:5000/api/auth/profile
+Authorization: Bearer TOKEN
+
+
+### ========== EVENT ENDPOINTS ==========
+
+### 4. Create Event (Replace TOKEN with your JWT token)
+POST http://localhost:5000/api/events
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "title": "Team Meeting",
+  "startTime": "2024-11-15T10:00",
+  "endTime": "2024-11-15T11:00",
+  "status": "BUSY"
+}
+
+### 5. Get All Events (Replace TOKEN with your JWT token)
+GET http://localhost:5000/api/events
+Authorization: Bearer TOKEN
+
+### 6. Get Event by ID (Replace TOKEN and EVENT_ID)
+GET http://localhost:5000/api/events/EVENT_ID
+Authorization: Bearer TOKEN
+
+### 7. Update Event (Replace TOKEN and EVENT_ID)
+PUT http://localhost:5000/api/events/EVENT_ID
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "title": "Updated Meeting",
+  "status": "SWAPPABLE"
+}
+
+### 8. Delete Event (Replace TOKEN and EVENT_ID)
+DELETE http://localhost:5000/api/events/EVENT_ID
+Authorization: Bearer TOKEN
+
+
+### ========== SWAP ENDPOINTS ==========
+
+### 9. Get Swappable Slots (Replace TOKEN)
+GET http://localhost:5000/api/swappable-slots
+Authorization: Bearer TOKEN
+
+### 10. Create Swap Request (Replace TOKEN, MY_SLOT_ID, THEIR_SLOT_ID)
+POST http://localhost:5000/api/swap-request
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "mySlotId": "MY_SLOT_ID",
+  "theirSlotId": "THEIR_SLOT_ID"
+}
+
+### 11. Get Incoming Swap Requests (Replace TOKEN)
+GET http://localhost:5000/api/swap-requests/incoming
+Authorization: Bearer TOKEN
+
+### 12. Get Outgoing Swap Requests (Replace TOKEN)
+GET http://localhost:5000/api/swap-requests/outgoing
+Authorization: Bearer TOKEN
+
+### 13. Accept Swap Request (Replace TOKEN and REQUEST_ID)
+POST http://localhost:5000/api/swap-response/REQUEST_ID
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "accept": true
+}
+
+### 14. Reject Swap Request (Replace TOKEN and REQUEST_ID)
+POST http://localhost:5000/api/swap-response/REQUEST_ID
+Content-Type: application/json
+Authorization: Bearer TOKEN
+
+{
+  "accept": false
+}
