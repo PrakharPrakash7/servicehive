@@ -16,6 +16,7 @@ app.use(cors({
     'http://localhost:5173',
     'http://localhost:3000',
     'https://frontend-29v63peqn-prakharprakash7s-projects.vercel.app',
+    'https://frontend-ep7n9flo1-prakharprakash7s-projects.vercel.app',
     'https://frontend-prakharprakash7s-projects.vercel.app'
   ],
   credentials: true,
