@@ -10,15 +10,9 @@ dotenv.config();
 const app: Express = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
+// Middleware - Allow all origins for now to avoid CORS issues
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:3000',
-    'https://frontend-29v63peqn-prakharprakash7s-projects.vercel.app',
-    'https://frontend-ep7n9flo1-prakharprakash7s-projects.vercel.app',
-    'https://frontend-prakharprakash7s-projects.vercel.app'
-  ],
+  origin: true,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
